@@ -1,0 +1,116 @@
+
+import cv2
+import numpy as np
+import easyocr  #For OCR
+import matplotlib.pyplot as plt
+#%matplotlib inline
+
+from pyzbar.pyzbar import decode
+
+im_1_path = 'C:/Users/HP/Desktop/ISB Sample imges/Untitled design (8).png'
+
+def recognize_text(img_path):
+    reader = easyocr.Reader(['en'])
+    return reader.readtext(img_path)
+
+def overlay_ocr_text(img_path, save_name):
+    # loads image
+    img = cv2.imread(img_path)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    dpi = 80
+    fig_width, fig_height = int(img.shape[0]/dpi), int(img.shape[1]/dpi)
+    plt.figure()
+    f, axarr = plt.subplots(1,2, figsize=(fig_width, fig_height))
+    axarr[0].imshow(img)
+
+    # recognize text
+    result = recognize_text(img_path)
+
+
+# QR and bar code detection START
+
+    code = decode(img)
+    print(code)
+
+    for barcode in decode(img):
+        pts = np.array([barcode.polygon], np.int32)
+        pts = pts.reshape((-1, 1, 2))
+
+        cv2.drawContours(img, [pts], -1, color=(255, 0, 0), thickness=-1)
+
+    for (bbox, text, prob) in result:
+        if prob >= 0.5:
+            # display
+            print(f' {text} ')
+            print(len(text))
+
+            (top_left, top_right, bottom_right, bottom_left) = bbox
+            top_left = (int(top_left[0]), int(top_left[1]))
+            bottom_right = (int(bottom_right[0]), int(bottom_right[1]))
+            print(top_left)
+            print(bottom_right)
+
+
+            string1 = text
+
+            # opening a text file
+            file1 = open("sensitive_words.txt", "r")
+
+            # read file content
+            readfile = file1.read()
+
+
+            if string1 in readfile:
+                cv2.rectangle(img=img, pt1=top_left, pt2=bottom_right, color=(0, 255, 0), thickness=-1)
+            else:
+                print('String', string1, 'Not Found')
+
+            # closing aA file
+            file1.close()
+
+
+            # old version
+            # apn image ke har sensitiv words ke liye if else condition nhi dal skte,
+            # if (text == 'Certificate ID' or text == 'certificate ID' or text == 'ID' or text == 'ID' or text == 'ID'):
+            # cv2.rectangle(img=img, pt1=top_left, pt2=bottom_right, color=(0, 255, 0), thickness=15)
+
+            # if (text == 'Certificate ID') :
+            # cv2.rectangle(img=img, pt1=(35, 191), pt2=(300, 210), color=(0, 255, 0), thickness=15)
+
+            # if (text == 'Name:') :
+            # cv2.rectangle(img=img, pt1=top_left, pt2=(642, 292), color=(0, 255, 0), thickness=15)
+
+            '''if (text == 'FQMRT8262D') :
+              cv2.rectangle(img=img, pt1=top_left, pt2=bottom_right, color=(0, 255, 0), thickness=-1)'''
+
+            # if (text == 'Password:') :
+            # cv2.rectangle(img=img, pt1=top_left, pt2=bottom_right, color=(0, 255, 0), thickness=15)
+
+             #cv2.rectangle(img=img, pt1=top_left, pt2=bottom_right, color=(0, 255, 0), thickness=15)
+             #put recognized text
+             #cv2.putText(img=img, text=text, org=(top_left[0], top_left[1] - 10), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2, color=(0, 255, 0), thickness=5)
+            num = text.strip()
+            nuk = (len(num))
+            if nuk == 10:
+                #for i in range(0, nuk):
+                if num[0].isalpha() == 1 & num[1].isalpha() == 1 & num[2].isalpha() == 1 & num[3].isalpha() == 1 & num[4].isalpha() == 1 & num[5].isnumeric() == 1 & num[6].isnumeric() == 1 & num[7].isnumeric() == 1 & num[8].isnumeric() == 1 & num[9].isalpha() == 1:
+                    cv2.rectangle(img=img, pt1=top_left, pt2=bottom_right, color=(0, 255, 0), thickness=-1)
+                else:
+                    print("i is not pan card")
+            if "+91" in num:
+                cv2.rectangle(img=img, pt1=top_left, pt2=bottom_right, color=(0, 255, 0), thickness=-1)
+
+            if "Plot no" in num:
+                cv2.rectangle(img=img, pt1=top_left, pt2=bottom_right, color=(0, 255, 0), thickness=-1)
+
+            if "1234" in num:
+                cv2.rectangle(img=img, pt1=top_left, pt2=bottom_right, color=(0, 255, 0), thickness=-1)
+
+# show and save image
+    axarr[1].imshow(img)
+    plt.savefig(f'Output/{save_name}_overlayx.jpg', bbox_inches='tight')
+
+
+overlay_ocr_text(im_1_path,'Pranay')
+
+

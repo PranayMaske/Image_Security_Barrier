@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Image Security Barrier</title>
+    <link rel="stylesheet" href="/static/Css/ISBstyle.css">
+    <link rel="stylesheet" href="/static/Css/Delivery_button.css">
+</head>
+
+<body>
+    <header>
+        <div class="main">
+            
+            <div class="col-xs-2">
+                <div id="logo">Image Security Barrier</div>
+            </div>
+            <ul>
+                <li class="active"><a href="isb_home">Home</a> </li>
+                <li><a href="Achievement_isb">About ISB</a></li>
+                <li><a href="About_us_isb">About Us</a> </li>
+                <li><a href="Contact">Contact</a> </li>
+            </ul>   
+        </div>
+        <div class="animetion"><canvas id="canvas"></canvas>
+            <script type="text/javascript" src="/static/JS/rainbow-rain.js"></script>
+        </div>
+
+        <div class="title">
+            <h1>Image Security Barrier</h1>
+            <h3>Hide Valuable Information Using Machine Learning</h3>
+        </div>
+        
+    </header>
+  
+     <!--****************************file to upload**********************************************-->
+    <p><h1 align="center" style="font-size:150px">ISB</h1>
+<div class="container">
+<div class="row">
+    <h2>Select a Image to upload</h2>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    {% if filename %}
+        <div>
+            <img src="{{ url_for('static', filename=filename) }}" alt="Cropped Image">
+        </div>
+    {% endif %}
+
+        <form class="login" action = "{{ url_for('insertintotable') }}" enctype="multipart/form-data" method = "POST">
+        <div class="login_title">
+        <dl>
+                <input type="file" name="image" class="form-control" autocomplete="off" required>
+
+        </dl>
+        <p>
+            <button type="submit" value="Submit" class="order" ><span class="default">Deliver Image</span><span class="success">Image successfuly Deliver to ML model<svg viewbox="0 0 12 10">
+        <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+        </svg></span>
+        <div class="box"></div>
+        <div class="truck">
+        <div class="back"></div>
+        <div class="front">
+        <div class="window"></div>
+        </div>
+        <div class="light top"></div>
+        <div class="light bottom"></div>
+        </div>
+        <div class="lines"></div>
+            </button>
+    <!-- partial -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="static/JS/Delivery_button.js"></script>
+        </p>
+
+        </div>
+    </form>
+
+</div>
+</div>
+<!--****************************end file to upload**********************************************-->
+
+
+
+    <section class="footer">
+        <h3>About Us</h3>
+           <p>ISB create a barrier between hackers and public its software to recognize our sensitive information from image and hide them.
+ The final output is totally secure for sharing anywhere on Internet/social media platforms<br>
+        </p>
+        </section>
+    
+
+</body>
+
+</html>

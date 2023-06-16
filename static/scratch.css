@@ -1,0 +1,281 @@
+*{
+    margin: 0;
+    padding: 0 ;
+    font-family: Century Gothic;
+}
+/****************restaurant start**************/
+header{
+    background-image:linear-gradient(rgba(0,0,0,1),rgba(0,0,0,1)), url("https://img.freepik.com/premium-vector/closed-padlock-digital-background-cyber-security_42077-119.jpg?w=996");
+    height: 100vh;
+    background-size: cover;
+    background-position:center ;
+}
+
+ul{
+    float: right;
+    list-style-position: none;
+    margin-top: 20px;
+}
+
+ul li{
+    display: inline-block;
+}
+
+ul li a{
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.6s ease;
+    display: block;
+}
+
+ul li a:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+ul li ul li{
+    margin-top: 5px;
+    display: none ;
+    height: 40px;
+}
+
+ul li:hover ul li{
+    display: block;
+    transition: 0.6s ease;
+}
+
+ul li.active a{
+    background-color: #fff;
+    color: #000;
+}
+
+.logo img{
+    float: left;
+    margin-top: 0px;
+    width: 150px;
+    height: auto;
+    position:fixed;
+}
+
+.main{
+    max-width: 1300px;
+    margin-right : auto;
+
+}
+
+.title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title h1{
+    color: #fff;
+    font-size: 80px;
+    text-align: center;
+}
+
+.title h2{
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+}
+
+.title h4{
+    color: #fff;
+    font-size: 30px;
+    text-align:left ;
+
+}
+
+.title p{
+    color: #fff;
+    font-size: 17px;
+    text-align:justify;
+}
+.button1{
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn1{
+    text-decoration: none;
+    color: #fff;
+    padding: 20px 60px;
+    border: 1px solid #fff;
+    transition: 0.6s ease;
+}
+
+.btn1:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+/**************Footer***************/
+
+.footer{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    background-color: rgb(209, 192, 177);
+    color: #fff;
+}
+.footer h4{
+    margin-bottom: 25px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+/****************restaurant end**************/
+/***********menu start**********/
+    .main_menu{
+        margin: 2%;
+       }
+       /*.grey{
+        background-image:linear-gradient(rgba(88, 88, 88, 0.19rgba(88, 88, 88, 0.192)92))
+       }*/
+
+       .main_card{
+           margin-left: 100px;
+       }
+       .card_menu{
+            width: 25%;
+            display: inline-block;
+            box-shadow: 2px 2px 20px rgb(0, 0, 0);
+            border-radius: 5px;
+            margin: 2%;
+            background-color: rgb(255, 255, 255);
+           }
+
+       .image_menu img{
+         width: 100%;
+         border-top-right-radius: 5px;
+         border-top-left-radius: 5px;
+        }
+
+       .title_menu{
+         text-align: center;
+         padding: 10px;
+        }
+
+       h1{
+         font-size: 20px;
+        }
+
+       .des_menu{
+         padding: 3px;
+         text-align: center;
+
+         padding-top: 10px;
+               border-bottom-right-radius: 5px;
+         border-bottom-left-radius: 5px;
+       }
+       button{
+         margin-top: 40px;
+         margin-bottom: 10px;
+         background-color: white;
+         border: 1px solid black;
+         border-radius: 5px;
+         padding:10px;
+       }
+       button:hover{
+         background-color: black;
+         color: white;
+         transition: .5s;
+         cursor: pointer;
+       }
+/***************menu end***********/
+/****************Table booking start**************/
+.book_table{
+    font-family: 'Releway', sans-serif;
+    letter-spacing: 1px;
+    color: #fafafa;
+    font-weight: 400;
+    line-height: 40px;
+}
+
+.container{
+    background-color: #fafafa;
+    margin: 100px;
+    box-shadow: rgba(0,0,0,.1);
+    display: grid;
+    grid-template-columns: 40% 60%;
+
+}
+
+.container_1{
+    background-color: #fafafa;
+    margin: 100px;
+    box-shadow: rgba(0,0,0,.1);
+    display: grid;
+}
+
+.container-time{
+    background-color: rgba(0, 0, 0, 0.966);
+    padding: 50px;
+    outline: 3px dashed #ffd900;
+    outline-offset: -30px;
+    text-align: center;
+}
+
+.heading{
+    font-size: 35px;
+    text-transform: uppercase;
+    color: #fafafa;
+}
+
+.heading-day{
+    color: #ffd900;
+    font-size: 30px;
+}
+
+.heading-phone{
+    font-size: 20px;
+}
+
+.container-form{
+    padding: 10px;
+    margin : 30px;
+    color: #000;
+}
+
+form{
+    display: grid;
+    grid-row-gap: 20px;
+}
+
+form p{
+    font-family: 600;
+}
+
+.form-fild{
+    display: flex;
+    justify-content: space-between;
+}
+
+input,select{
+    pad: 10px 15px
+}
+
+.btn{
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size: 18px;
+    border-radius: 100px;
+}
+
+.whatsapp{
+    display: flex;
+    margin-left: 38%;
+
+}
+.whatsapp img{
+  width: 50px;
+  height: 50px;
+}

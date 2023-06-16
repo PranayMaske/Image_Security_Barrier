@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/static/scratch.css">
+    <script src="/static/scratch.js"></script>
+</head>
+<body>
+    <header>
+        <div class="main">
+            <ul>
+                <li class="active"><a href="Welcome_in_ISB.html">Home</a> </li>
+                <li><a href="/Menu">Menu</a> </li>
+                <li><a href="#">Book/Order</a>
+                <ul>
+                    <li><a href="C:\Users\Pranay\Desktop\Practical 7\Task3\Book_Table.html">Book Table</a></li>
+                    <li><a href="C:\Users\Pranay\Desktop\Practical 7\Task3\Menu.html">Order Food</a></li>
+                </ul>
+                </li>
+                <li><a href="C:\Users\Pranay\Desktop\Practical 7\Task3\About_us.html">About Us</a> </li>
+                <li><a href="C:\Users\Pranay\Desktop\Practical 7\Task3\Contact.html">Contact</a> </li>
+            </ul>
+        </div>
+        <canvas id="canvas"></canvas>
+        <script src="/static/scratch.js"></script>
+        <div class="title">
+            <h1>Image Security Barrier</h1>
+        </div>
+        <div class="button1">
+            <a href="C:\Users\Pranay\Desktop\Practical 7\Task3\Menu.html" class="btn1">Menu</a>
+        </div>
+    </header>
+ <!--****************************file to upload**********************************************-->
+    <p><h1 align="center" style="font-size:150px ; font-family:cursive">ISB</h1>
+<p><h1 align="center" style="font-size:80px ; font-family:cursive">Image Securitygfgd Barrier</h1>
+<div class="container">
+<div class="row">
+    <h2>Select a file to upload</h2>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    {% if filename %}
+        <div>
+            <img src="{{ url_for('static', filename=filename) }}" alt="Cropped Image">
+        </div>
+    {% endif %}
+
+        <form class="login" action = "{{ url_for('insertintotable') }}" enctype="multipart/form-data" method = "POST">
+        <div class="login_title">
+        <dl>
+                <input type="file" name="image" class="form-control" autocomplete="off" required>
+
+        </dl>
+        <p>
+            <input type="submit" value="Submit" class="btn btn-info">
+        </p>
+        </div>
+    </form>
+
+</div>
+</div>
+<!--****************************end file to upload**********************************************-->
+
+    <section class="footer">
+        <h3>About Us</h3>
+        <p>Barbeque Nation was founded in 2006 by one of our Promoters.<br>
+            We currently own and operate 150 outlets in India, 5 outlets in UAE, 1 outlet in Malaysia and 1 outlet in Oman.<br>
+            One of the leading casual dining chains in India,<br>
+        </p>
+        </section>
+
+
+</body>
+
+</html>
